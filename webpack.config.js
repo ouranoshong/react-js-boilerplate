@@ -9,7 +9,7 @@ const glob = require('glob');
 
 const PATHS = {
     app: path.join(__dirname, 'app'),
-    build: path.join(__dirname, 'build')
+    build: path.join(__dirname, 'build'),
 };
 
 const commonConfig = merge([
@@ -18,7 +18,7 @@ const commonConfig = merge([
             app: PATHS.app,
         },
         node: {
-            fs: 'empty'
+            fs: 'empty',
         },
         output: {
             path: PATHS.build,
@@ -26,7 +26,7 @@ const commonConfig = merge([
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: 'Webpack demo',
+                template: path.join(__dirname, 'index.html')
             }),
             new webpack.LoaderOptionsPlugin(merge([
                 parts.eslintOptions(),
@@ -35,7 +35,9 @@ const commonConfig = merge([
         ],
 
     },
-    parts.lintJavaScript({ include: PATHS.app, exclude: PATHS.nodeModules, emitWarning: true, }),
+
+    parts.lintJavaScript({ include: PATHS.app, exclude: PATHS.nodeModules, emitWarning: true }),
+
     parts.lintCSS({ include: PATHS.app }),
     parts.loadFonts({
         options: {
@@ -70,11 +72,11 @@ const productionConfig = merge([
                 options: {
                     modules: true,
                     importLoaders: 1,
-                    localIdentName: '[local]'
-                }
+                    localIdentName: '[local]',
+                },
             },
-            parts.autoprefix()
-        ]
+            parts.autoprefix(),
+        ],
     }),
     parts.purifyCSS({
         paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true }),
@@ -130,6 +132,7 @@ const developmentConfig = merge([
 
     {
         output: {
+            filename: '[name].js',
             devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]',
         },
     },
@@ -144,12 +147,12 @@ const developmentConfig = merge([
     parts.devServerPoll(),
     parts.loadCSS(),
     parts.loadImages(),
-    parts.dontParse({
-        name: 'react',
-        path: path.resolve(
-            __dirname, 'node_modules/react/dist/react.min.js'
-        ),
-    }),
+    // parts.dontParse({
+    //     name: 'react',
+    //     path: path.resolve(
+    //         __dirname, 'node_modules/react/dist/react.min.js'
+    //     ),
+    // }),
 ]);
 
 

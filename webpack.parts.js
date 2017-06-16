@@ -70,9 +70,9 @@ exports.devServerPoll = () => ({
         // Ignore node_modules so CPU usage with poll
         // watching drops significantly.
         new webpack.WatchIgnorePlugin([
-            path.join(__dirname, 'node_modules')
+            path.join(__dirname, 'node_modules'),
         ]),
-    ]
+    ],
 
 });
 
@@ -90,9 +90,9 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
                         options: {
                             modules: true,
                             importLoaders: 1,
-                            localIdentName: '[name]-[local]-[hash:base64:6]'
-                        }
-                    }
+                            localIdentName: '[name]-[local]-[hash:base64:6]',
+                        },
+                    },
                 ],
             },
         ],
@@ -105,7 +105,7 @@ exports.extractCSS = ({ include, exclude, use }) => {
     // Output extracted CSS to a file
     const plugin = new ExtractTextPlugin({
         filename: '[name].[contenthash:8].css',
-        allChunks: true
+        allChunks: true,
     });
 
     return {
@@ -271,19 +271,19 @@ exports.setFreeVariable = (key, value) => {
 };
 
 exports.dontParse = ({ name, path }) => {
-  const alias = {};
-  alias[name] = path;
+    const alias = {};
+    alias[name] = path;
 
-  return {
-    module: {
-      noParse: [
-        new RegExp(path),
-      ],
-    },
-    resolve: {
-      alias,
-    },
-  };
+    return {
+        module: {
+            noParse: [
+                new RegExp(path),
+            ],
+        },
+        resolve: {
+            alias,
+        },
+    };
 };
 
 

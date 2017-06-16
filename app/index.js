@@ -1,8 +1,18 @@
+/**
+ * App entry point
+ */
 
-const demo = () => {
-    console.log('Hello World');
-};
+// Libraries
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-module.exports = {
-    demo,
-};
+import App from './App';
+
+// Base styling
+import './index.css';
+
+// ID of the DOM element to mount app on
+const DOM_APP_EL_ID = 'app';
+
+// Render the router
+ReactDOM.render(( <App /> ), document.getElementById(DOM_APP_EL_ID));
