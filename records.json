@@ -1,0 +1,46 @@
+{
+  "html-webpack-plugin for \"index.html\"": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/webpack/buildin/module.js": "3IRH",
+          "node_modules/webpack/buildin/global.js": "DuR2",
+          "node_modules/lodash/lodash.js": "M4fF",
+          "node_modules/html-webpack-plugin/lib/loader.js!node_modules/html-webpack-plugin/default_index.ejs": "a/t9"
+        },
+        "usedIds": {
+          "3IRH": "3IRH",
+          "DuR2": "DuR2",
+          "M4fF": "M4fF",
+          "a/t9": "a/t9"
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "byBlocks": {},
+        "usedIds": {
+          "0": 0
+        }
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "node_modules/babel-loader/lib/index.js??ref--3!node_modules/eslint-loader/index.js!app/index.js": "2twT"
+    },
+    "usedIds": {
+      "2twT": "2twT"
+    }
+  },
+  "chunks": {
+    "byName": {
+      "app": 0,
+      "manifest": 1
+    },
+    "byBlocks": {},
+    "usedIds": {
+      "0": 0,
+      "1": 1
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./app/index.js"],"names":[],"mappings":"oCACM,CAIN,EAAO,QACH,CADa,KAJJ,UACT,SAAQ,IACX,cAFD","file":"app.4419f205.js","sourcesContent":["\nconst demo = () => {\n    console.log('Hello World');\n};\n\nmodule.exports = {\n    demo,\n};\n\n\n\n// WEBPACK FOOTER //\n// ./app/index.js"],"sourceRoot":""}
