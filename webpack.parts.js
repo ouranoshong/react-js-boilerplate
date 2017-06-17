@@ -5,8 +5,9 @@ const PurifyCSSPlugin = require('purifycss-webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
-
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 const cssnano = require('cssnano');
 
 exports.devServer = ({ host, port } = {}) => ({
@@ -245,7 +246,19 @@ exports.attachRevision = () => ({
 
 exports.minifyJavaScript = () => ({
     plugins: [
-        new BabiliPlugin(),
+        new UglifyJSPlugin(
+            {
+                beautify: false,
+                comments: false,
+                sourceMap: true,
+                compress: {
+                    warnings: false,
+                    drop_console: true,
+                    collapse_vars: true,
+                    reduce_vars: true,
+                }
+            }
+        ),
     ],
 });
 
